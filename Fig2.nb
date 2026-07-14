@@ -1,0 +1,188 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      7254,        180]
+NotebookOptionsPosition[      6779,        164]
+NotebookOutlinePosition[      7175,        180]
+CellTagsIndexPosition[      7132,        177]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "This", " ", "file", " ", "contains", " ", "the", " ", "code", " ", "of", 
+     " ", "the", " ", "generation", " ", "of", " ", "figure", " ", "2", " ", 
+     "in", " ", "the", " ", "article", "\[IndentingNewLine]", "The", " ", 
+     "failure", " ", "of", " ", "propagation", " ", "in", " ", 
+     "heterogeneous", " ", "reaction"}], "-", 
+    RowBox[{
+    "diffusion", " ", "systems", " ", "through", " ", "the", " ", "method", " ",
+      "of", " ", "upper", " ", "and", " ", "lower", " ", "solutions", "\[IndentingNewLine]",
+      "by", " ", "Mat\[IAcute]as", " ", "Courdurier", " ", "and", " ", 
+     "Esteban", " ", "Paduro"}]}], "\[IndentingNewLine]", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\[Alpha]", "=", "0.6"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"barR", "=", "0.1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\[Eta]", "=", "0.0898"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"filename", "=", "\"\<Fig2.png\>\""}], ";"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.9820589565155926`*^9, 3.9820590154100227`*^9}, {
+   3.9820591099521008`*^9, 3.9820591105342426`*^9}, {3.9820591683723507`*^9, 
+   3.982059190329342*^9}, {3.982059945653288*^9, 3.982059946019556*^9}, {
+   3.982060047840315*^9, 3.9820600485191383`*^9}, {3.982060107623358*^9, 
+   3.982060107703253*^9}, {3.9820788288376255`*^9, 3.9820788288694115`*^9}, {
+   3.982078866791792*^9, 3.982078881698509*^9}, {3.982079191932644*^9, 
+   3.982079229354109*^9}, {3.9821600164258575`*^9, 3.982160021799631*^9}, {
+   3.982160723499319*^9, 3.9821607269716473`*^9}, 3.9821612541474857`*^9, {
+   3.9821612907829456`*^9, 3.9821612934830227`*^9}, 3.9821613530621033`*^9, {
+   3.9821624102911873`*^9, 3.98216242642465*^9}, {3.9821624841348667`*^9, 
+   3.9821624844908485`*^9}, {3.982496834201317*^9, 3.982496843562008*^9}, {
+   3.982496968590332*^9, 3.9824969687182503`*^9}, {3.982826559209261*^9, 
+   3.9828266284350967`*^9}, {3.9890718301978645`*^9, 
+   3.9890718302816315`*^9}, {3.9890718761012745`*^9, 3.989071879954378*^9}, {
+   3.9890721390014477`*^9, 3.989072139391842*^9}, {3.9890723475212727`*^9, 
+   3.989072350458908*^9}, {3.989072402787615*^9, 3.989072476298744*^9}, {
+   3.9890728997222233`*^9, 3.9890729055718765`*^9}, {3.9924626516011124`*^9, 
+   3.9924626684928074`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"f39c9548-e179-9643-9321-86ac70bf3327"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"F", "[", "r_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"r", "^", "2"}], "/", "2"}], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"3", 
+       RowBox[{"r", "^", "2"}]}], " ", "-", " ", 
+      RowBox[{"4", " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "+", "\[Alpha]"}], ")"}], "r"}], "+", 
+      RowBox[{"6", "\[Alpha]"}]}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"curves", "=", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"F", "[", "r", "]"}], ",", 
+       RowBox[{"Piecewise", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"F", "[", "barR", "]"}], "+", 
+             RowBox[{"\[Eta]", 
+              RowBox[{"(", 
+               RowBox[{"r", "-", "barR"}], ")"}]}]}], ",", 
+            RowBox[{"r", ">", "barR"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"None", ",", "True"}], "}"}]}], "}"}], "]"}]}], "}"}], ",",
+      "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "0", ",", "1.2"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Frame", "->", "True"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotLegends", "->", 
+      RowBox[{"Placed", "[", 
+       RowBox[{
+        RowBox[{"LineLegend", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"\"\<\>\"", ",", "\"\<\>\""}], "}"}], ",", 
+          RowBox[{"LegendMarkerSize", "->", "23"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"Left", ",", "Top"}], "}"}]}], "]"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "->", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "0.05"}], ",", "0.2"}], "}"}]}]}], "\[IndentingNewLine]",
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"point", "=", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"barR", ",", 
+        RowBox[{"F", "[", "barR", "]"}]}], "}"}], "}"}], ",", 
+     RowBox[{"PlotStyle", "->", "Red"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"line", "=", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{"{", 
+      RowBox[{"Dashed", ",", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"barR", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"barR", ",", 
+            RowBox[{"F", "[", "barR", "]"}]}], "}"}]}], "}"}], "]"}]}], "}"}],
+      "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"img", "=", 
+  RowBox[{"Show", "[", 
+   RowBox[{"curves", ",", "line", ",", "point"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"filename", ",", "img"}], "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.982669481367201*^9, 3.9826694826617527`*^9}, {
+   3.989071833338505*^9, 3.9890718716862106`*^9}, {3.9890721154941044`*^9, 
+   3.9890721206044216`*^9}, {3.9890721859837303`*^9, 
+   3.9890721900663967`*^9}, {3.9890722570930405`*^9, 3.989072364487215*^9}, {
+   3.989072499752638*^9, 3.9890725039534645`*^9}, {3.9890725843634377`*^9, 
+   3.989072597797104*^9}, {3.9890726443183594`*^9, 3.989072657378973*^9}, {
+   3.98907271161108*^9, 3.9890728347801285`*^9}, {3.9890728663393097`*^9, 
+   3.9890728960069656`*^9}, {3.9924626815213337`*^9, 3.9924628878891068`*^9}, 
+   3.992462932613199*^9, {3.993030413603733*^9, 3.9930304137157307`*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"1b133e91-762c-fd40-8e3f-c8583934cdb2"]
+},
+WindowSize->{1268, 640},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"14.3 for Microsoft Windows (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"cda1f918-8e62-904e-878f-8d2797f356ea"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 2644, 47, 215, "Input",ExpressionUUID->"f39c9548-e179-9643-9321-86ac70bf3327",
+ InitializationCell->True],
+Cell[3201, 69, 3574, 93, 256, "Input",ExpressionUUID->"1b133e91-762c-fd40-8e3f-c8583934cdb2"]
+}
+]
+*)
+
